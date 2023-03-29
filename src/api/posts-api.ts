@@ -26,12 +26,12 @@ export interface IPost {
     main: IImageData
   }
 }
-export interface IExtendedLikesInfo {
+export interface ILikesInfo {
   likesCount: number
   dislikesCount: number
   myStatus: LikeStatuses
 }
-export interface IPostExtendedLikesInfo extends IExtendedLikesInfo {
+export interface IPostExtendedLikesInfo extends ILikesInfo {
   newestLikes: INewestLike[]
 }
 export interface INewestLike {
