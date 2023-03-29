@@ -1,5 +1,5 @@
 import { type ILikesInfo, type LikeStatuses } from './posts-api'
-import { axiosInstance } from './axios-config'
+import { axiosInstance } from './axios-config/axios-config'
 
 export const commentsAPI = {
   async putLikeOrDislikeToComment (commentId: string, likeStatus: LikeStatuses) {

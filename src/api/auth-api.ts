@@ -1,4 +1,4 @@
-import { axiosInstance } from './axios-config'
+import { axiosInstance } from './axios-config/axios-config'
 
 export const authAPI = {
   async passwordRecovery (email: string): Promise<void> {

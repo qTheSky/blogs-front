@@ -1,9 +1,15 @@
-import { axiosInstance } from './axios-config'
+import { axiosInstance } from './axios-config/axios-config'
 import { type IImageData } from './blogs-api'
 
 export const postsAPI = {
   async putLikeOrDislikeToPost (postId: string, likeStatus: LikeStatuses) {
     return await axiosInstance.put(`/posts/${postId}/like-status`, { likeStatus })
+  },
+  async getCommentsOfPost (postId: string) { // todo add query for comments
+    return await axiosInstance.get(`/posts/${postId}/comments`)
+  },
+  async createCommentForPost (postId: string, commentText: string) {
+    return await axiosInstance.post(`/posts/${postId}/comments`, { content: commentText })
   },
   async getAllPosts () { // todo add query
     return await axiosInstance.get('/posts')

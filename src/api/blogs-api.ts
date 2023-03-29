@@ -1,4 +1,5 @@
-import { axiosInstance } from './axios-config'
+import { axiosInstance } from './axios-config/axios-config'
+import { type IPost } from './posts-api'
 
 export const blogsAPI = {
   async subscribeToBlog (blogId: string) {
@@ -9,6 +10,9 @@ export const blogsAPI = {
   },
   async getBlogs () { // todo add query
     return await axiosInstance.get<IPaginatorWithItems<IBlog[]>>('/blogs')
+  },
+  async getPostsOfBlog (blogId: string) {
+    return await axiosInstance.get<IPaginatorWithItems<IPost[]>>(`/blogs/${blogId}/posts`)
   },
   async getBlogById (blogId: number) {
     return await axiosInstance.get<IBlog>(`/blog/${blogId}`)

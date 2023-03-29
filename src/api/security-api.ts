@@ -1,4 +1,4 @@
-import { axiosInstance } from './axios-config'
+import { axiosInstance } from './axios-config/axios-config'
 
 export const securityAPI = {
   async getAllDevices () {
