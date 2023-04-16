@@ -1,10 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { AuthPage } from './features/auth/AuthPage';
 
 export const App = () => {
-  return (
-    <div className='flex'>
-      <div>123</div>
-      <div>321</div>
-    </div>
-  )
-}
+  return <AuthPage />;
+};
