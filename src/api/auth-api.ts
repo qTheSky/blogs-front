@@ -1,5 +1,6 @@
 import { axiosInstance } from './axios-config/axios-config';
 import { type IRegistration } from '../features/auth/interfaces/registration.interface';
+import { ILogin } from '../features/auth/interfaces/login.interface';
 
 export const authAPI = {
   async passwordRecovery(email: string): Promise<void> {
@@ -11,11 +12,8 @@ export const authAPI = {
       newPassword,
     });
   },
-  async login(loginOrEmail: string, password: string) {
-    return await axiosInstance.post<{ accessToken: string }>('/auth/login', {
-      loginOrEmail,
-      password,
-    });
+  async login(data: ILogin) {
+    return await axiosInstance.post<{ accessToken: string }>('/auth/login', data);
   },
   async refreshToken() {
     return await axiosInstance.post<{ accessToken: string }>('/auth/refresh-token', {});

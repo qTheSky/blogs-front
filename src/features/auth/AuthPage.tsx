@@ -2,39 +2,36 @@ import React from 'react';
 import { useAppDispatch } from '../../store';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../shared/components/Button';
-import { IRegistration } from './interfaces/registration.interface';
 import { Field } from '../../shared/components/Field';
+import { login } from './auth.slice';
+import { ILogin } from './interfaces/login.interface';
 
 export const AuthPage = () => {
   const dispatch = useAppDispatch();
 
-  const { register, handleSubmit } = useForm<IRegistration>();
+  const { register, handleSubmit } = useForm<ILogin>();
 
-  const onSubmit = (data: IRegistration) => {
-    console.log(data);
-    // dispatch(registerThunk(data));
+  const onSubmit = (data: ILogin) => {
+    dispatch(login(data));
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col w-[400px]">
-        <Field label="Login" {...register('login', { required: 'Login is required' })} />
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
         <Field
-          label="Email"
-          type="email"
-          {...register('email', { required: 'Email is required' })}
+          label="Email or Username"
+          {...register('loginOrEmail', { required: 'Login is required' })}
         />
         <Field
           label="Password"
-          type="password"
-          {...register('password', { required: 'Password is required' })}
+          {...register('password', { required: 'Login is required' })}
         />
         <Button
           onClick={() => {
             console.log('sign up clicked');
           }}
         >
-          Sign up
+          Sign In
         </Button>
       </form>
     </div>
